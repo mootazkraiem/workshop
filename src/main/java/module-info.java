@@ -9,4 +9,6 @@ module com.example.demo.controller {
     exports com.example.demo;  // Export the com.example.demo.controller package so JavaFX can access it
     opens com.example.demo to javafx.fxml;
     opens com.example.demo.controller to javafx.fxml;// Allow reflection for FXML controllers
+    opens com.example.demo.entity to javafx.base;
+
 }

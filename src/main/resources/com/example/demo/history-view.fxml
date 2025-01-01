@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controller.HistoryController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <!-- Title Label -->
+        <Text fx:id="titleLabel" text="Reservation History" layoutX="20" layoutY="30" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+        <!-- TableView -->
+        <TableView fx:id="reservationTable" layoutX="20" layoutY="60" prefWidth="600" prefHeight="400">
+            <columns>
+                <!-- Reservation ID Column -->
+                <TableColumn fx:id="colId" text="ID" prefWidth="100">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <!-- Start Time Column -->
+                <TableColumn fx:id="colStartTime" text="Start Time" prefWidth="150">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="startTime"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <!-- End Time Column -->
+                <TableColumn fx:id="colEndTime" text="End Time" prefWidth="150">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="endTime"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <!-- Workspace ID Column -->
+                <TableColumn fx:id="colWorkspaceId" text="Workspace ID" prefWidth="100">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="workspaceId"/>
+                    </cellValueFactory>
+                </TableColumn>
+
+                <!-- Status Column -->
+                <TableColumn fx:id="colStatus" text="Status" prefWidth="100">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="status"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+
+        <!-- Back Button -->
+<!--        <Button fx:id="backButton" text="Back to Dashboard" layoutX="20" layoutY="480" onAction="#handleBackToDashboard" />-->
+    </children>
+
+</AnchorPane>

@@ -1,0 +1,48 @@
+/* General Styles */
+.dashboard-header {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-background-color: #2c3e50;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
+
+/* Side Menu Styles */
+.side-menu {
+    -fx-background-color: #34495e;
+    -fx-padding: 15;
+}
+
+.menu-button {
+    -fx-background-color: #2c3e50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.menu-button:hover {
+    -fx-background-color: #16a085;
+}
+
+.logout-button {
+    -fx-background-color: #e74c3c;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* Content Area Styles */
+.content-pane {
+    -fx-padding: 15;
+}
+
+.default-content {
+    -fx-font-size: 16px;
+    -fx-text-fill: #2c3e50;
+    -fx-alignment: center;
+}

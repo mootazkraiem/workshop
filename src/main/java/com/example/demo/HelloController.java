@@ -17,6 +17,7 @@ import java.sql.SQLException;
 
 public class HelloController {
     Stage stage;
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -32,11 +33,10 @@ public class HelloController {
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(event -> {
             try {
-                // Load the login scene
+
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
                 Scene loginScene = new Scene(fxmlLoader.load(), 320, 240);
 
-                // Set the new scene for the stage
                 stage.setScene(loginScene);
             } catch (IOException e) {
                 e.printStackTrace();

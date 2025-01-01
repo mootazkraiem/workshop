@@ -8,16 +8,26 @@ public class Reservation {
     private LocalDateTime EndTime;
     private int userId;
     private int workspaceId;
+    private String status;
 
     public Reservation() {
     }
 
-    public Reservation(int id, LocalDateTime startTime, LocalDateTime endTime, int userId, int workspaceId) {
+    public Reservation(int id, LocalDateTime startTime, LocalDateTime endTime, int userId, int workspaceId, String status) {
         this.id = id;
         StartTime = startTime;
         EndTime = endTime;
         this.userId = userId;
         this.workspaceId = workspaceId;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getId() {

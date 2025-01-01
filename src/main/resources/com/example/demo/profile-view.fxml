@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controller.ProfileController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label text="Profile" layoutX="50" layoutY="20" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+        <Label text="Name:" layoutX="50" layoutY="80" />
+        <TextField fx:id="txtName" layoutX="160" layoutY="80" prefWidth="300" />
+
+        <Label text="Email:" layoutX="50" layoutY="120" />
+        <TextField fx:id="txtEmail" layoutX="160" layoutY="120" prefWidth="300" />
+
+        <Label text="Password:" layoutX="50" layoutY="160" />
+        <PasswordField fx:id="txtPassword" layoutX="160" layoutY="160" prefWidth="300" />
+
+        <Label text="Password:" layoutX="50" layoutY="200" />
+        <PasswordField fx:id="confirmedPassword" layoutX="160" layoutY="200" prefWidth="300" />
+
+        <Label text="Role:" layoutX="50" layoutY="240" />
+        <TextField fx:id="txtRole" layoutX="160" layoutY="240" prefWidth="200" />
+
+        <Button text="Save" layoutX="160" layoutY="290" prefWidth="100" onAction="#handleSave" />
+        <Label fx:id="statusLabel" layoutX="50" layoutY="330" textFill="red" />
+<!--        <Button text="Cancel" layoutX="260" layoutY="250" prefWidth="100" onAction="#handleCancel" />-->
+    </children>
+
+</AnchorPane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.controller.ReservationController" stylesheets="@styles.css" prefWidth="600" prefHeight="400">
+    <!-- Header -->
+    <Label text="Make a Reservation" styleClass="header-label" layoutX="200" layoutY="20" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <!-- Workspace Field -->
+    <Label text="Workspace:" layoutX="50" layoutY="80" />
+    <ComboBox fx:id="workspaceComboBox" layoutX="150" layoutY="80" prefWidth="300" promptText="Select Workspace" />
+
+    <!-- Start Time -->
+    <Label text="Start Time:" layoutX="50" layoutY="130" />
+    <TextField fx:id="startTimeField" layoutX="150" layoutY="130" prefWidth="300" promptText="Enter Start Time (e.g., 2024-01-01T09:00)" />
+
+    <!-- End Time -->
+    <Label text="End Time:" layoutX="50" layoutY="180" />
+    <TextField fx:id="endTimeField" layoutX="150" layoutY="180" prefWidth="300" promptText="Enter End Time (e.g., 2024-01-01T17:00)" />
+    <!--stauts-->
+    <Label text="Status" layoutX="50" layoutY="230" />
+    <ComboBox fx:id="statusField" layoutX="150" layoutY="230" prefWidth="300" promptText="Status" />
+
+    <!-- Submit Button -->
+    <Button text="Submit" layoutX="150" layoutY="290" fx:id="submitButton" onAction="#handleSubmitAction" prefWidth="150" />
+    <!-- Status Message -->
+    <Label fx:id="statusLabel" layoutX="50" layoutY="330" textFill="red" />
+</AnchorPane>

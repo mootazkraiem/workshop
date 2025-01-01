@@ -5,9 +5,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.TextField?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.LoginController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.LoginController" >
     <Label fx:id="statusLabel" text="Please log in" layoutX="100" layoutY="50" />
     <TextField fx:id="usernameField" promptText="Username" layoutX="100" layoutY="100" />
     <PasswordField fx:id="passwordField" promptText="Password" layoutX="100" layoutY="150" />
     <Button fx:id="loginButton" text="Login" layoutX="100" layoutY="200" onAction="#handleLoginButtonAction" />
+
 </AnchorPane>

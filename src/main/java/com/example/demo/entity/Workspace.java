@@ -7,25 +7,25 @@ public class Workspace {
     private String name;
     private String location;
     private int capacity;
-    private Status status;
+    private Status availability_status;
 
-    public Workspace() {
-    }
-
-    public Workspace(int id, String name, String location, int capacity, Status status) {
+    public Workspace(int id, String name, String location, int capacity, Status availability_status) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.capacity = capacity;
-        this.status = status;
+        this.availability_status = availability_status;
     }
 
-    public Status getStatus() {
-        return status;
+    public Workspace() {
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public Status getAvailability_status() {
+        return availability_status;
+    }
+
+    public void setAvailability_status(Status availability_status) {
+        this.availability_status = availability_status;
     }
 
     public int getId() {

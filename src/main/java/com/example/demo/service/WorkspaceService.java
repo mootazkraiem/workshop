@@ -47,7 +47,29 @@ public class WorkspaceService {
 
 
     public void addWorkspace(Workspace workspace) {
-        String sql = "INSERT INTO workspaces (name, location, capacity, availability_status) VALUES ('" + workspace.getName() + "', '" + workspace.getLocation() + "', '" + workspace.getCapacity() + "', '" + workspace.getAvailability_status()+ "')";
+        // SQL query to insert a new workspace
+        String sql = "INSERT INTO workspace (name, location, capacity, availability_status) VALUES (?, ?, ?, ?)";
+
+        // Try-with-resources to ensure that resources are closed properly
+        try (Connection connection = DatabaseConnection.connect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+
+            // Set the parameters for the prepared statement
+            preparedStatement.setString(1, workspace.getName());
+            preparedStatement.setString(2, workspace.getLocation());
+            preparedStatement.setInt(3, workspace.getCapacity());
+            preparedStatement.setString(4, workspace.getAvailability_status().name());
+
+            preparedStatement.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            // Print any SQL exceptions
+            System.out.println("Error while adding workspace: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void deleteWorkspace(int workspaceId) {

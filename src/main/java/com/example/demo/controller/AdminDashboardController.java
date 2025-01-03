@@ -37,7 +37,7 @@ public class AdminDashboardController {
 
     @FXML
     private void navigateToWorkspaces() {
-        loadView("history-view.fxml");
+        loadView("workspace-view.fxml");
     }
 
     @FXML

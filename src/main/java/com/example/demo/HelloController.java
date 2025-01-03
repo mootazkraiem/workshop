@@ -30,7 +30,7 @@ public class HelloController {
 
     }
     public void switchToLoginAfterDelay() {
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(event -> {
             try {
 

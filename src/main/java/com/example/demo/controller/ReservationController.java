@@ -2,14 +2,20 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.CurrentUser;
 import com.example.demo.entity.Reservation;
+import com.example.demo.entity.User;
 import com.example.demo.entity.Workspace;
 import com.example.demo.service.ReservationService;
+import com.example.demo.service.UserService;
 import com.example.demo.service.WorkspaceService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -32,20 +38,34 @@ public class ReservationController {
     private Button submitButton;
 
     @FXML
+    private Button backButton;
+
+    @FXML
     private Label statusLabel;
+
+    @FXML
+    private ComboBox<String> userField;
+
+    @FXML
+    private Label userLabel;
+
 
     private final ReservationService reservationService = new ReservationService();
     private final WorkspaceService workspaceService = new WorkspaceService();
+    private final UserService userService = new UserService();
 
     private List<Workspace> workspaces; // Store the list of workspaces
     // Store the ID of the logged-in user
 
+    private List<User> users;
+    CurrentUser currentUser = CurrentUser.getInstance();
     // Method to set the logged-in user ID (called during controller initialization)
 
     @FXML
     public void initialize() {
         // Fetch all workspaces from the database
         workspaces = workspaceService.getAllWorkspaces();
+        users = userService.getAllUsers();
 
         // Populate ComboBox with workspace names
         ObservableList<String> workspaceNames = FXCollections.observableArrayList(
@@ -57,19 +77,56 @@ public class ReservationController {
         // Set items in the ComboBox
         workspaceComboBox.setItems(workspaceNames);
 
-        ObservableList<String> statusNames = FXCollections.observableArrayList(
-                "pending"
+
+        if (currentUser.getRole().equals("admin")) {
+            ObservableList<String> statusNames = FXCollections.observableArrayList(
+                    "pending",
+                    "canceled",
+                    "confirme"
+
+            );
+            statusField.setItems(statusNames);
+
+
+
+
+        }else {
+            ObservableList<String> statusNames = FXCollections.observableArrayList(
+                    "pending"
+
+            );
+            statusField.setItems(statusNames);
+
+            userField.setVisible(false);
+            userLabel.setVisible(false);
+            backButton.setVisible(false);
+
+        }
+
+
+
+        ObservableList<String> userNames = FXCollections.observableArrayList(
+                users.stream()
+                        .map(user -> String.valueOf(user.getId())) // Convert user IDs to Strings
+                        .toList()
+
 
         );
-        statusField.setItems(statusNames);
+        userField.setItems(userNames);
+
+
+
 
     }
 
     @FXML
     private void handleSubmitAction() {
         try {
-            CurrentUser currentUser = CurrentUser.getInstance();
+
             int userId = currentUser.getId();
+            if (currentUser.getRole().equals("admin")) {
+                userId = Integer.parseInt(userField.getValue());
+            }
 
             // Get values from fields
             String workspaceName = workspaceComboBox.getValue();
@@ -134,5 +191,23 @@ public class ReservationController {
             }
         }
         throw new IllegalArgumentException("Workspace not found: " + workspaceName);
+    }
+
+    public void handleBackAction(){
+
+        try {
+            // Load the previous view (e.g., adminReservation-view.fxml)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/adminReservation-view.fxml"));
+            Parent adminReservationView = loader.load();
+
+            // Get the content pane from the dashboard
+            StackPane contentPane = (StackPane) workspaceComboBox.getScene().lookup("#contentPane");
+
+            // Replace the current view in the content pane
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(adminReservationView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

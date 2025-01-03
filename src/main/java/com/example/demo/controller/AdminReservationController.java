@@ -1,21 +1,27 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.CurrentUser;
+
 import com.example.demo.entity.Reservation;
-import com.example.demo.entity.Workspace;
+
 import com.example.demo.service.ReservationService;
-import com.example.demo.service.WorkspaceService;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.StackPane;
+
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LocalDateTimeStringConverter;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
+
 import java.util.List;
 
 public class AdminReservationController {
@@ -31,6 +37,10 @@ public class AdminReservationController {
     private TableColumn<Reservation, Integer> colWorkspaceId;
     @FXML
     private TableColumn<Reservation, String> colStatus;
+    @FXML
+    private TableColumn<Reservation, Integer> colUserId;
+    @FXML
+    private Button add;
 
 
 
@@ -47,11 +57,14 @@ public class AdminReservationController {
         colEndTime.setCellValueFactory(new PropertyValueFactory<>("endTime"));
         colWorkspaceId.setCellValueFactory(new PropertyValueFactory<>("workspaceId"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colUserId.setCellValueFactory(new PropertyValueFactory<>("userId"));
 
         colStartTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateTimeStringConverter()));
         colEndTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateTimeStringConverter()));
         colWorkspaceId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-//        colStatus.setCellFactory(TextFieldTableCell.forTableColumn());
+        colStatus.setCellFactory(TextFieldTableCell.forTableColumn());
+        colUserId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
 
         // Add the reservations to the table
         reservationTable.getItems().addAll(reservations);
@@ -77,19 +90,36 @@ public class AdminReservationController {
             reservationService.updateReservation(reservation);
         });
 
-//        colStatus.setOnEditCommit(event -> {
-//            Reservation reservation = event.getRowValue();
-//            reservation.setStatus(event.getNewValue());
-//            reservationService.updateReservation(reservation);
-//        });
+        colStatus.setOnEditCommit(event -> {
+            Reservation reservation = event.getRowValue();
+            reservation.setStatus(event.getNewValue());
+            reservationService.updateReservation(reservation);
+        });
+
+        colUserId.setOnEditCommit(event -> {
+            Reservation reservation = event.getRowValue();
+            reservation.setUserId(event.getNewValue());
+            reservationService.updateReservation(reservation);
+        });
+    }
+    public void add(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/reservation-view.fxml"));
+            Parent addReservationView = loader.load();
+
+
+            StackPane contentPane = (StackPane) reservationTable.getScene().lookup("#contentPane");
+
+
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(addReservationView);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
-
-//    private void populateFields(Reservation reservation) {
-//        txtWorkspaceId.setText(String.valueOf(reservation.getWorkspaceId()));
-//        dateStartTime.setValue(reservation.getStartTime().toLocalDate());
-//        dateEndTime.setValue(reservation.getEndTime().toLocalDate());
-//        comboStatus.setValue(reservation.getStatus());
-//    }
 
 }

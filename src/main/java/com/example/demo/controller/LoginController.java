@@ -61,7 +61,7 @@ public class LoginController {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("adminDashboard-view.fxml"));
                     Parent dashboardRoot = fxmlLoader.load();
-                    Scene dashboardScene = new Scene(dashboardRoot, 800, 600);
+                    Scene dashboardScene = new Scene(dashboardRoot, 940, 600);
 
                     // Get the current stage dynamically
                     Stage stage = (Stage) ((Node) usernameField).getScene().getWindow();

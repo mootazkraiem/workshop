@@ -7,7 +7,7 @@
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.controller.ReservationController" stylesheets="@styles.css" prefWidth="600" prefHeight="400">
     <!-- Header -->
-    <Label text="Make a Reservation" styleClass="header-label" layoutX="200" layoutY="20" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Label text="Make a Reservation" styleClass="header-label" layoutX="200" layoutY="20" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
 
     <!-- Workspace Field -->
     <Label text="Workspace:" layoutX="50" layoutY="80" />
@@ -20,12 +20,22 @@
     <!-- End Time -->
     <Label text="End Time:" layoutX="50" layoutY="180" />
     <TextField fx:id="endTimeField" layoutX="150" layoutY="180" prefWidth="300" promptText="Enter End Time (e.g., 2024-01-01T17:00)" />
-    <!--stauts-->
-    <Label text="Status" layoutX="50" layoutY="230" />
+
+    <!-- Status -->
+    <Label text="Status:" layoutX="50" layoutY="230" />
     <ComboBox fx:id="statusField" layoutX="150" layoutY="230" prefWidth="300" promptText="Status" />
 
+    <!-- Users -->
+    <Label  fx:id="userLabel" text="Users:" layoutX="50" layoutY="280" />
+    <ComboBox fx:id="userField" layoutX="150" layoutY="280" prefWidth="300" promptText="Select User" />
+
     <!-- Submit Button -->
-    <Button text="Submit" layoutX="150" layoutY="290" fx:id="submitButton" onAction="#handleSubmitAction" prefWidth="150" />
+    <Button text="Submit" layoutX="320" layoutY="340" fx:id="submitButton" onAction="#handleSubmitAction" prefWidth="150" />
+
+    <!-- Back Button -->
+    <Button text="Back" layoutX="150" layoutY="340" fx:id="backButton" onAction="#handleBackAction" prefWidth="150" />
+
     <!-- Status Message -->
-    <Label fx:id="statusLabel" layoutX="50" layoutY="330" textFill="red" />
+    <Label fx:id="statusLabel" layoutX="50" layoutY="380" textFill="red" />
 </AnchorPane>
+

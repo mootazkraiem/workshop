@@ -57,20 +57,40 @@ public class LoginController {
 
 
             statusLabel.setText("Login successful!");
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard-view.fxml"));
-                Parent dashboardRoot = fxmlLoader.load();
-                Scene dashboardScene = new Scene(dashboardRoot, 800, 600);
+            if(currentUser.getRole().equals("admin")) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("adminDashboard-view.fxml"));
+                    Parent dashboardRoot = fxmlLoader.load();
+                    Scene dashboardScene = new Scene(dashboardRoot, 800, 600);
 
-                // Get the current stage dynamically
-                Stage stage = (Stage) ((Node) usernameField).getScene().getWindow();
+                    // Get the current stage dynamically
+                    Stage stage = (Stage) ((Node) usernameField).getScene().getWindow();
 
-                // Set the new scene
-                stage.setScene(dashboardScene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-                statusLabel.setText("Error: Unable to load the dashboard.");
+                    // Set the new scene
+                    stage.setScene(dashboardScene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    statusLabel.setText("Error: Unable to load the dashboard.");
+                }
+            }
+            else {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard-view.fxml"));
+                    Parent dashboardRoot = fxmlLoader.load();
+                    Scene dashboardScene = new Scene(dashboardRoot, 800, 600);
+
+                    // Get the current stage dynamically
+                    Stage stage = (Stage) ((Node) usernameField).getScene().getWindow();
+
+                    // Set the new scene
+                    stage.setScene(dashboardScene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    statusLabel.setText("Error: Unable to load the dashboard.");
+                }
+
             }
         } else {
             statusLabel.setText("Login failed: Invalid username or password.");

@@ -8,17 +8,17 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.DashboardController" stylesheets="@styles.css">
     <!-- Top Menu (Optional, Can Add a Header) -->
     <top>
-        <Label text="Dashboard" styleClass="dashboard-header" />
+        <Label text="Dashboard" styleClass="dashboard-header"  prefWidth="180.5" />
     </top>
 
     <!-- Left Side Menu -->
     <left>
         <VBox spacing="20" styleClass="side-menu" minWidth="100">
             <!-- Menu Items -->
-            <Button fx:id="btnReservation" text="Reservation" onAction="#navigateToReservation" styleClass="menu-button" />
-            <Button fx:id="btnHistory" text="History" onAction="#navigateToHistory" styleClass="menu-button" />
-            <Button fx:id="btnProfile" text="Profile" onAction="#navigateToProfile" styleClass="menu-button" />
-            <Button fx:id="btnLogout" text="Logout" onAction="#logout" styleClass="menu-button logout-button" />
+            <Button fx:id="btnReservation" text="Reservation" onAction="#navigateToReservation" styleClass="menu-button"  prefWidth="150"/>
+            <Button fx:id="btnHistory" text="History" onAction="#navigateToHistory" styleClass="menu-button"  prefWidth="150"/>
+            <Button fx:id="btnProfile" text="Profile" onAction="#navigateToProfile" styleClass="menu-button"  prefWidth="150"/>
+            <Button fx:id="btnLogout" text="Logout" onAction="#logout" styleClass="menu-button logout-button"  prefWidth="150"/>
         </VBox>
     </left>
 

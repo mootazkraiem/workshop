@@ -106,6 +106,46 @@ public class ReservationService {
 
         return reservations;
     }
+    public List<Reservation> getAllReservationsforAdmin() {
+        // Get the logged-in user's ID
+        CurrentUser currentUser = CurrentUser.getInstance();
+        int userId = currentUser.getId(); // Assuming currentUser.getId() returns the logged-in user's ID
+
+        // Modify the SQL query to get only the reservations for the logged-in user
+        String sql = "SELECT * FROM reservations";
+
+        List<Reservation> reservations = new ArrayList<>();
+
+        try (Connection connection = DatabaseConnection.connect()) {
+            // Prepare the statement and set the user ID
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Process the result set and add reservations to the list
+                while (resultSet.next()) {
+                    // Retrieve values from the result set and map them to the Reservation object
+                    int id = resultSet.getInt("id");
+                    LocalDateTime startTime = resultSet.getTimestamp("start_time").toLocalDateTime(); // Assuming your DB uses start_time
+                    LocalDateTime endTime = resultSet.getTimestamp("end_time").toLocalDateTime(); // Assuming your DB uses end_time
+                    int userIdFromDb = resultSet.getInt("user_id");
+                    int workspaceId = resultSet.getInt("workspace_id");
+                    String status = resultSet.getString("status");
+
+                    // Create a new Reservation object
+                    Reservation reservation = new Reservation(id, startTime, endTime, userIdFromDb, workspaceId, status);
+                    reservations.add(reservation);
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return reservations;
+    }
+
 
 
 

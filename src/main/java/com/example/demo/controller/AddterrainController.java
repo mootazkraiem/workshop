@@ -1,20 +1,19 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Status;
-import com.example.demo.entity.Workspace;
-import com.example.demo.service.WorkspaceService;
+import com.example.demo.entity.terrain; // Changed from Workspace to Terrain
+import com.example.demo.service.terrainService; // Changed from WorkspaceService to TerrainService
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-public class AddWorkspaceController {
+public class AddterrainController { // Changed AddworkspaceController to AddTerrainController
     @FXML
     private TextField nameField;
 
@@ -33,7 +32,7 @@ public class AddWorkspaceController {
     @FXML
     private Button backButton;
 
-    private final WorkspaceService workspaceService = new WorkspaceService();
+    private final terrainService terrainService = new terrainService(); // Changed WorkspaceService to TerrainService
 
     @FXML
     public void initialize() {
@@ -47,21 +46,20 @@ public class AddWorkspaceController {
         int capacity = Integer.parseInt(capacityField.getText());
         String status = statusComboBox.getValue();
 
-        Workspace workspace = new Workspace();
-        workspace.setName(name);
-        workspace.setLocation(location);
-        workspace.setCapacity(capacity);
-        workspace.setAvailability_status(Status.valueOf(status.toUpperCase()));
+        terrain terrain = new terrain(); // Changed Workspace to Terrain
+        terrain.setName(name); // Changed workspace to terrain
+        terrain.setLocation(location); // Changed workspace to terrain
+        terrain.setCapacity(capacity); // Changed workspace to terrain
+        terrain.setAvailability_status(Status.valueOf(status.toUpperCase())); // Changed workspace to terrain
 
-        workspaceService.addWorkspace(workspace);
-
+        terrainService.addTerrain(terrain); // Changed addWorkspace to addTerrain
     }
 
     @FXML
     private void handleBackAction() {
         try {
             // Load the previous view (e.g., adminReservation-view.fxml)
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/workspace-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/terrain-view.fxml")); // Changed terrain-view.fxml to terrain-view.fxml
             Parent adminReservationView = loader.load();
 
             // Get the content pane from the dashboard

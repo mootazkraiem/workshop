@@ -1,14 +1,15 @@
 package com.example.demo.entity;
 
-public class terrain {
 
-    private int id;
+public class Ticket {
+
+    private int id ;
     private String name;
     private String location;
     private int capacity;
     private Status availability_status;
 
-    public terrain(int id, String name, String location, int capacity, Status availability_status) {
+    public Ticket(int id, String name, String location, int capacity, Status availability_status) {
         this.id = id;
         this.name = name;
         this.location = location;
@@ -16,7 +17,7 @@ public class terrain {
         this.availability_status = availability_status;
     }
 
-    public terrain() {
+    public Ticket() {
     }
 
     public Status getAvailability_status() {

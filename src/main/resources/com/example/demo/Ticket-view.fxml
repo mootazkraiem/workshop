@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo.controller.TicketController"
+            stylesheets="@styles.css" prefWidth="600" prefHeight="400">
+
+    <children>
+        <!-- Header -->
+        <Label text="Ticket Management" styleClass="header-label" layoutX="20" layoutY="15" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+        <!-- Add Button -->
+        <Button text="Add Ticket" layoutX="550" layoutY="15" fx:id="addTicketButton" onAction="#handleAddTicketAction" prefWidth="150" />
+
+
+        <!-- Ticket Table -->
+        <TableView fx:id="TicketTable" layoutX="20" layoutY="60" prefWidth="700" prefHeight="350">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="60" />
+                <TableColumn fx:id="colName" text="Name" prefWidth="160" />
+                <TableColumn fx:id="colLocation" text="Location" prefWidth="160" />
+                <TableColumn fx:id="colCapacity" text="Capacity" prefWidth="160" />
+                <TableColumn fx:id="colStatus" text="Availability" prefWidth="160" />
+            </columns>
+        </TableView>
+
+
+    </children>
+</AnchorPane>
+

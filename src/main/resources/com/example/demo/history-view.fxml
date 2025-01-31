@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
+
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
@@ -38,10 +39,10 @@
                     </cellValueFactory>
                 </TableColumn>
 
-                <!-- Terrain ID Column -->
-                <TableColumn fx:id="colTerrainId" text="Terrain ID" prefWidth="100">
+                <!-- Ticket ID Column -->
+                <TableColumn fx:id="colTicketId" text="Ticket ID" prefWidth="100">
                     <cellValueFactory>
-                        <PropertyValueFactory property="terrainId"/>
+                        <PropertyValueFactory property="TicketId"/>
                     </cellValueFactory>
                 </TableColumn>
 

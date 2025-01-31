@@ -13,14 +13,15 @@ public class ReservationService {
 
     public List<Reservation> reservations = new ArrayList<>();
 
+
     public void addReservation(Reservation reservation) {
-        String sql = "INSERT INTO reservations (terrain_id, user_id, start_time, end_time, status) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO reservations (Ticket_id, user_id, start_time, end_time, status) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             // Set parameters for the SQL query
-            preparedStatement.setInt(1, reservation.getTerrainId());
+            preparedStatement.setInt(1, reservation.getTicketId());
             preparedStatement.setInt(2, reservation.getUserId()); // Replace with actual user ID if needed
             preparedStatement.setString(3, reservation.getStartTime().toString());
             preparedStatement.setString(4, reservation.getEndTime().toString());
@@ -36,12 +37,12 @@ public class ReservationService {
     }
 
     public void updateReservation(Reservation reservation) {
-        String sql = "UPDATE reservations SET start_time = ?, end_time = ?, terrain_id = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE reservations SET start_time = ?, end_time = ?, Ticket_id = ?, status = ? WHERE id = ?";
         try (Connection connection = DatabaseConnection.connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setTimestamp(1, Timestamp.valueOf(reservation.getStartTime()));
             preparedStatement.setTimestamp(2, Timestamp.valueOf(reservation.getEndTime()));
-            preparedStatement.setInt(3, reservation.getTerrainId());
+            preparedStatement.setInt(3, reservation.getTicketId());
             preparedStatement.setString(4, reservation.getStatus());
             preparedStatement.setInt(5, reservation.getId());
             preparedStatement.executeUpdate();
@@ -52,10 +53,16 @@ public class ReservationService {
 
     public void deleteReservation(int reservationId) {
         String sql = "DELETE FROM reservations WHERE id = " + reservationId;
-        try(Connection connection = DatabaseConnection.connect()) {
+        try(Connection connection = DatabaseConnection.connect())
+        {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
-        } catch (Exception e) {
+
+
+
+
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -80,15 +87,16 @@ public class ReservationService {
                 while (resultSet.next()) {
                     // Retrieve values from the result set and map them to the Reservation object
                     int id = resultSet.getInt("id");
-                    LocalDateTime startTime = resultSet.getTimestamp("start_time").toLocalDateTime();
-                    LocalDateTime endTime = resultSet.getTimestamp("end_time").toLocalDateTime();
+                    LocalDateTime startTime = resultSet.getTimestamp("start_time").toLocalDateTime(); // Assuming your DB uses start_time
+                    LocalDateTime endTime = resultSet.getTimestamp("end_time").toLocalDateTime(); // Assuming your DB uses end_time
                     int userIdFromDb = resultSet.getInt("user_id");
-                    int terrainId = resultSet.getInt("terrain_id");
+                    int TicketId = resultSet.getInt("Ticket_id");
                     String status = resultSet.getString("status");
 
                     // Create a new Reservation object
-                    Reservation reservation = new Reservation(id, startTime, endTime, userIdFromDb, terrainId, status);
+                    Reservation reservation = new Reservation(id, startTime, endTime, userIdFromDb, TicketId, status);
                     reservations.add(reservation);
+
                 }
             }
         } catch (SQLException e) {
@@ -98,13 +106,12 @@ public class ReservationService {
 
         return reservations;
     }
-
-    public List<Reservation> getAllReservationsForAdmin() {
+    public List<Reservation> getAllReservationsforAdmin() {
         // Get the logged-in user's ID
         CurrentUser currentUser = CurrentUser.getInstance();
         int userId = currentUser.getId(); // Assuming currentUser.getId() returns the logged-in user's ID
 
-        // Modify the SQL query to get all reservations (for admin view)
+        // Modify the SQL query to get only the reservations for the logged-in user
         String sql = "SELECT * FROM reservations";
 
         List<Reservation> reservations = new ArrayList<>();
@@ -113,20 +120,22 @@ public class ReservationService {
             // Prepare the statement and set the user ID
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
+
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 // Process the result set and add reservations to the list
                 while (resultSet.next()) {
                     // Retrieve values from the result set and map them to the Reservation object
                     int id = resultSet.getInt("id");
-                    LocalDateTime startTime = resultSet.getTimestamp("start_time").toLocalDateTime();
-                    LocalDateTime endTime = resultSet.getTimestamp("end_time").toLocalDateTime();
+                    LocalDateTime startTime = resultSet.getTimestamp("start_time").toLocalDateTime(); // Assuming your DB uses start_time
+                    LocalDateTime endTime = resultSet.getTimestamp("end_time").toLocalDateTime(); // Assuming your DB uses end_time
                     int userIdFromDb = resultSet.getInt("user_id");
-                    int terrainId = resultSet.getInt("terrain_id");
+                    int TicketId = resultSet.getInt("Ticket_id");
                     String status = resultSet.getString("status");
 
                     // Create a new Reservation object
-                    Reservation reservation = new Reservation(id, startTime, endTime, userIdFromDb, terrainId, status);
+                    Reservation reservation = new Reservation(id, startTime, endTime, userIdFromDb, TicketId, status);
                     reservations.add(reservation);
+
                 }
             }
         } catch (SQLException e) {
@@ -136,4 +145,8 @@ public class ReservationService {
 
         return reservations;
     }
+
+
+
+
 }

@@ -18,14 +18,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-    private final UserService userService = new UserService();
+    private final UserService userService =new UserService();
+
 
     Stage stage;
-
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
     // These fields should be annotated with @FXML to link them to the FXML elements
     @FXML
     private TextField usernameField;  // TextField for username input
@@ -46,8 +45,9 @@ public class LoginController {
         String password = passwordField.getText();
         User user = userService.loginUser(username, password);
 
-        if (user != null) {
+        if ( user != null) {
             // Pass the logged-in user ID to the controller
+
             CurrentUser currentUser = CurrentUser.getInstance();
             currentUser.setId(user.getId());
             currentUser.setUsername(user.getName());
@@ -55,9 +55,9 @@ public class LoginController {
             currentUser.setRole(user.getRole());
             currentUser.setEmail(user.getEmail());
 
+
             statusLabel.setText("Login successful!");
-            if (currentUser.getRole().equals("admin")) {
-                // Admin view
+            if(currentUser.getRole().equals("admin")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("adminDashboard-view.fxml"));
                     Parent dashboardRoot = fxmlLoader.load();
@@ -73,8 +73,8 @@ public class LoginController {
                     e.printStackTrace();
                     statusLabel.setText("Error: Unable to load the dashboard.");
                 }
-            } else {
-                // User view (this could eventually be changed to a terrain-focused dashboard if needed)
+            }
+            else {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard-view.fxml"));
                     Parent dashboardRoot = fxmlLoader.load();
@@ -90,6 +90,7 @@ public class LoginController {
                     e.printStackTrace();
                     statusLabel.setText("Error: Unable to load the dashboard.");
                 }
+
             }
         } else {
             statusLabel.setText("Login failed: Invalid username or password.");
@@ -100,7 +101,7 @@ public class LoginController {
     @FXML
     public void initialize() {
         // You can initialize things here if necessary
-        usernameField.setText("mootazfsg@gmail.com");  // Sample username for testing
-        passwordField.setText("mootaz123");  // Sample password for testing
+        usernameField.setText("mootazfsg@gmail.com");
+        passwordField.setText("mootaz123");
     }
 }

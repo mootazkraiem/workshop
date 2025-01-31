@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.DashboardController" stylesheets="@styles.css">
+    <!-- Top Menu (Optional, Can Add a Header) -->
+    <top>
+        <Label text="Dashboard" styleClass="dashboard-header"  prefWidth="180.5" />
+    </top>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.DashboardController" stylesheets="@styles.css">
-    <!-- Header -->
-    <HBox fx:id="header" alignment="CENTER" styleClass="header-container">
-        <Label text="Welcome to the New Dashboard" styleClass="header-title"/>
-    </HBox>
+    <!-- Left Side Menu -->
+    <left>
+        <VBox spacing="20" styleClass="side-menu" minWidth="100">
+            <!-- Menu Items -->
+            <Button fx:id="btnReservation" text="Reservation" onAction="#navigateToReservation" styleClass="menu-button"  prefWidth="150"/>
+            <Button fx:id="btnHistory" text="History" onAction="#navigateToHistory" styleClass="menu-button"  prefWidth="150"/>
+            <Button fx:id="btnProfile" text="Profile" onAction="#navigateToProfile" styleClass="menu-button"  prefWidth="150"/>
+            <Button fx:id="btnLogout" text="Logout" onAction="#logout" styleClass="menu-button logout-button"  prefWidth="150"/>
+        </VBox>
+    </left>
 
-    <!-- Main Content Area (Dynamic) -->
-    <VBox fx:id="mainContent" spacing="30" alignment="CENTER" styleClass="content-area">
-        <Button fx:id="btnReservation" text="Manage Reservations" onAction="#navigateToReservation" styleClass="big-button" />
-        <Button fx:id="btnHistory" text="View History" onAction="#navigateToHistory" styleClass="big-button" />
-        <Button fx:id="btnProfile" text="My Profile" onAction="#navigateToProfile" styleClass="big-button" />
-        <Button fx:id="btnLogout" text="Logout" onAction="#logout" styleClass="big-button logout-button" />
-    </VBox>
-</StackPane>
+
+    <!-- Main Content Area -->
+    <center>
+        <StackPane fx:id="contentPane" styleClass="content-pane">
+            <!-- Default Content -->
+            <Label text="Welcome to the Dashboard!" fx:id="defaultLabel" styleClass="default-content" />
+        </StackPane>
+    </center>
+</BorderPane>

@@ -9,9 +9,9 @@
     <!-- Header -->
     <Label text="Make a Reservation" styleClass="header-label" layoutX="200" layoutY="20" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
 
-    <!-- Workspace Field -->
-    <Label text="Workspace:" layoutX="50" layoutY="80" />
-    <ComboBox fx:id="workspaceComboBox" layoutX="150" layoutY="80" prefWidth="300" promptText="Select Workspace" />
+    <!-- Ticket Field -->
+    <Label text="Ticket:" layoutX="50" layoutY="80" />
+    <ComboBox fx:id="TicketComboBox" layoutX="150" layoutY="80" prefWidth="300" promptText="Select Ticket" />
 
     <!-- Start Time -->
     <Label text="Start Time:" layoutX="50" layoutY="130" />

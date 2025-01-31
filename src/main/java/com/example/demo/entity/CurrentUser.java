@@ -9,12 +9,14 @@ public class CurrentUser {
     private String role;
 
     private CurrentUser() {}
+
     public static CurrentUser getInstance() {
         if (instance == null) {
             instance = new CurrentUser();
         }
         return instance;
     }
+
     public int getId() {
         return id;
     }

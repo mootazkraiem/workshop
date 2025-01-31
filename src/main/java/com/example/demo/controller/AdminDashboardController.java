@@ -36,8 +36,8 @@ public class AdminDashboardController {
     }
 
     @FXML
-    private void navigateToWorkspaces() {
-        loadView("workspace-view.fxml");
+    private void navigateToTickets() {
+        loadView("Ticket-view.fxml");
     }
 
     @FXML

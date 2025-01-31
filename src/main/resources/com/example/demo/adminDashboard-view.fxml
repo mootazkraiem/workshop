@@ -17,7 +17,7 @@
         <VBox spacing="20" styleClass="side-menu" minWidth="100">
             <!-- Menu Items -->
             <Button fx:id="btnReservations" text="Reservations" onAction="#navigateToReservations" styleClass="menu-button"  prefWidth="150"/>
-            <Button fx:id="btnWorkspaces" text="Workspaces" onAction="#navigateToWorkspaces" styleClass="menu-button"  prefWidth="150"/>
+            <Button fx:id="btnTickets" text="Tickets" onAction="#navigateToTickets" styleClass="menu-button"  prefWidth="150"/>
             <Button fx:id="btnUsers" text="Users" onAction="#navigateToUsers" styleClass="menu-button"  prefWidth="150"/>
             <Button fx:id="btnLogout" text="Logout" onAction="#logout" styleClass="menu-button logout-button"  prefWidth="150"/>
         </VBox>

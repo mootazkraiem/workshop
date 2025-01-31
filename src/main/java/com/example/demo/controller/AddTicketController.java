@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Status;
-import com.example.demo.entity.Workspace;
-import com.example.demo.service.WorkspaceService;
+import com.example.demo.entity.Ticket;
+import com.example.demo.service.TicketService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +14,7 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-public class AddWorkspaceController {
+public class AddTicketController {
     @FXML
     private TextField nameField;
 
@@ -33,7 +33,7 @@ public class AddWorkspaceController {
     @FXML
     private Button backButton;
 
-    private final WorkspaceService workspaceService = new WorkspaceService();
+    private final TicketService TicketService = new TicketService();
 
     @FXML
     public void initialize() {
@@ -47,13 +47,13 @@ public class AddWorkspaceController {
         int capacity = Integer.parseInt(capacityField.getText());
         String status = statusComboBox.getValue();
 
-        Workspace workspace = new Workspace();
-        workspace.setName(name);
-        workspace.setLocation(location);
-        workspace.setCapacity(capacity);
-        workspace.setAvailability_status(Status.valueOf(status.toUpperCase()));
+        Ticket Ticket = new Ticket();
+        Ticket.setName(name);
+        Ticket.setLocation(location);
+        Ticket.setCapacity(capacity);
+        Ticket.setAvailability_status(Status.valueOf(status.toUpperCase()));
 
-        workspaceService.addWorkspace(workspace);
+        TicketService.addTicket(Ticket);
 
     }
 
@@ -61,7 +61,7 @@ public class AddWorkspaceController {
     private void handleBackAction() {
         try {
             // Load the previous view (e.g., adminReservation-view.fxml)
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/workspace-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Ticket-view.fxml"));
             Parent adminReservationView = loader.load();
 
             // Get the content pane from the dashboard

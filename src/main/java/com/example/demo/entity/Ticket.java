@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 
-public class Workspace {
+public class Ticket {
 
     private int id ;
     private String name;
@@ -9,7 +9,7 @@ public class Workspace {
     private int capacity;
     private Status availability_status;
 
-    public Workspace(int id, String name, String location, int capacity, Status availability_status) {
+    public Ticket(int id, String name, String location, int capacity, Status availability_status) {
         this.id = id;
         this.name = name;
         this.location = location;
@@ -17,7 +17,7 @@ public class Workspace {
         this.availability_status = availability_status;
     }
 
-    public Workspace() {
+    public Ticket() {
     }
 
     public Status getAvailability_status() {

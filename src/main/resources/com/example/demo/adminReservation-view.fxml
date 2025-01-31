@@ -40,10 +40,10 @@
                     </cellValueFactory>
                 </TableColumn>
 
-                <!-- Workspace ID Column -->
-                <TableColumn fx:id="colWorkspaceId" text="Workspace ID" prefWidth="100">
+                <!-- Ticket ID Column -->
+                <TableColumn fx:id="colTicketId" text="Ticket ID" prefWidth="100">
                     <cellValueFactory>
-                        <PropertyValueFactory property="workspaceId"/>
+                        <PropertyValueFactory property="TicketId"/>
                     </cellValueFactory>
                 </TableColumn>
 

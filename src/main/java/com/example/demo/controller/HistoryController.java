@@ -28,7 +28,7 @@ public class HistoryController {
     @FXML
     private TableColumn<Reservation, LocalDateTime> colEndTime;
     @FXML
-    private TableColumn<Reservation, Integer> colWorkspaceId;
+    private TableColumn<Reservation, Integer> colTicketId;
     @FXML
     private TableColumn<Reservation, String> colStatus;
 
@@ -45,12 +45,12 @@ public class HistoryController {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colStartTime.setCellValueFactory(new PropertyValueFactory<>("startTime"));
         colEndTime.setCellValueFactory(new PropertyValueFactory<>("endTime"));
-        colWorkspaceId.setCellValueFactory(new PropertyValueFactory<>("workspaceId"));
+        colTicketId.setCellValueFactory(new PropertyValueFactory<>("TicketId"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         colStartTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateTimeStringConverter()));
         colEndTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateTimeStringConverter()));
-        colWorkspaceId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        colTicketId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 //        colStatus.setCellFactory(TextFieldTableCell.forTableColumn());
 
         // Add the reservations to the table
@@ -71,9 +71,9 @@ public class HistoryController {
             reservationService.updateReservation(reservation);
         });
 
-        colWorkspaceId.setOnEditCommit(event -> {
+        colTicketId.setOnEditCommit(event -> {
             Reservation reservation = event.getRowValue();
-            reservation.setWorkspaceId(event.getNewValue());
+            reservation.setTicketId(event.getNewValue());
             reservationService.updateReservation(reservation);
         });
 
@@ -86,7 +86,7 @@ public class HistoryController {
 
 
 //    private void populateFields(Reservation reservation) {
-//        txtWorkspaceId.setText(String.valueOf(reservation.getWorkspaceId()));
+//        txtTicketId.setText(String.valueOf(reservation.getTicketId()));
 //        dateStartTime.setValue(reservation.getStartTime().toLocalDate());
 //        dateEndTime.setValue(reservation.getEndTime().toLocalDate());
 //        comboStatus.setValue(reservation.getStatus());

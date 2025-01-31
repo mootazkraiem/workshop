@@ -34,7 +34,7 @@ public class AdminReservationController {
     @FXML
     private TableColumn<Reservation, LocalDateTime> colEndTime;
     @FXML
-    private TableColumn<Reservation, Integer> colWorkspaceId;
+    private TableColumn<Reservation, Integer> colTicketId;
     @FXML
     private TableColumn<Reservation, String> colStatus;
     @FXML
@@ -55,13 +55,13 @@ public class AdminReservationController {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colStartTime.setCellValueFactory(new PropertyValueFactory<>("startTime"));
         colEndTime.setCellValueFactory(new PropertyValueFactory<>("endTime"));
-        colWorkspaceId.setCellValueFactory(new PropertyValueFactory<>("workspaceId"));
+        colTicketId.setCellValueFactory(new PropertyValueFactory<>("TicketId"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         colUserId.setCellValueFactory(new PropertyValueFactory<>("userId"));
 
         colStartTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateTimeStringConverter()));
         colEndTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateTimeStringConverter()));
-        colWorkspaceId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        colTicketId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         colStatus.setCellFactory(TextFieldTableCell.forTableColumn());
         colUserId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
@@ -84,9 +84,9 @@ public class AdminReservationController {
             reservationService.updateReservation(reservation);
         });
 
-        colWorkspaceId.setOnEditCommit(event -> {
+        colTicketId.setOnEditCommit(event -> {
             Reservation reservation = event.getRowValue();
-            reservation.setWorkspaceId(event.getNewValue());
+            reservation.setTicketId(event.getNewValue());
             reservationService.updateReservation(reservation);
         });
 

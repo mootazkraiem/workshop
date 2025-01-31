@@ -30,7 +30,7 @@
 
         <Button text="Save" layoutX="160" layoutY="290" prefWidth="100" onAction="#handleSave" />
         <Label fx:id="statusLabel" layoutX="50" layoutY="330" textFill="red" />
-<!--        <Button text="Cancel" layoutX="260" layoutY="250" prefWidth="100" onAction="#handleCancel" />-->
+        <!--        <Button text="Cancel" layoutX="260" layoutY="250" prefWidth="100" onAction="#handleCancel" />-->
     </children>
 
 </AnchorPane>

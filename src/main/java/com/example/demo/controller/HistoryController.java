@@ -21,37 +21,39 @@ import java.util.List;
 public class HistoryController {
     @FXML
     private TableView<Reservation> reservationTable;
+
     @FXML
     private TableColumn<Reservation, Integer> colId;
+
     @FXML
     private TableColumn<Reservation, LocalDateTime> colStartTime;
+
     @FXML
     private TableColumn<Reservation, LocalDateTime> colEndTime;
+
     @FXML
-    private TableColumn<Reservation, Integer> colWorkspaceId;
+    private TableColumn<Reservation, Integer> colTerrainId; // Changed from colWorkspaceId to colTerrainId
+
     @FXML
     private TableColumn<Reservation, String> colStatus;
 
-
-
     private final ReservationService reservationService = new ReservationService();
+
     @FXML
     public void initialize() {
         List<Reservation> reservations = reservationService.getAllReservations();
 
         ObservableList<Reservation> observableReservations = FXCollections.observableArrayList(reservations);
 
-
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colStartTime.setCellValueFactory(new PropertyValueFactory<>("startTime"));
         colEndTime.setCellValueFactory(new PropertyValueFactory<>("endTime"));
-        colWorkspaceId.setCellValueFactory(new PropertyValueFactory<>("workspaceId"));
+        colTerrainId.setCellValueFactory(new PropertyValueFactory<>("terrainId")); // Changed from workspaceId to terrainId
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         colStartTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateTimeStringConverter()));
         colEndTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateTimeStringConverter()));
-        colWorkspaceId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-//        colStatus.setCellFactory(TextFieldTableCell.forTableColumn());
+        colTerrainId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter())); // Changed from workspaceId to terrainId
 
         // Add the reservations to the table
         reservationTable.getItems().addAll(reservations);
@@ -62,7 +64,7 @@ public class HistoryController {
         colStartTime.setOnEditCommit(event -> {
             Reservation reservation = event.getRowValue();
             reservation.setStartTime(event.getNewValue());
-            reservationService.updateReservation(reservation); // Call update method
+            reservationService.updateReservation(reservation);
         });
 
         colEndTime.setOnEditCommit(event -> {
@@ -71,12 +73,13 @@ public class HistoryController {
             reservationService.updateReservation(reservation);
         });
 
-        colWorkspaceId.setOnEditCommit(event -> {
+        colTerrainId.setOnEditCommit(event -> { // Changed from colWorkspaceId to colTerrainId
             Reservation reservation = event.getRowValue();
-            reservation.setWorkspaceId(event.getNewValue());
+            reservation.setTerrainId(event.getNewValue()); // Changed from setWorkspaceId to setTerrainId
             reservationService.updateReservation(reservation);
         });
 
+        // Optional: Uncomment and implement status edit if necessary
 //        colStatus.setOnEditCommit(event -> {
 //            Reservation reservation = event.getRowValue();
 //            reservation.setStatus(event.getNewValue());
@@ -84,11 +87,4 @@ public class HistoryController {
 //        });
     }
 
-
-//    private void populateFields(Reservation reservation) {
-//        txtWorkspaceId.setText(String.valueOf(reservation.getWorkspaceId()));
-//        dateStartTime.setValue(reservation.getStartTime().toLocalDate());
-//        dateEndTime.setValue(reservation.getEndTime().toLocalDate());
-//        comboStatus.setValue(reservation.getStatus());
-//    }
 }

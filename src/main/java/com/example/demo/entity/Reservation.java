@@ -7,18 +7,18 @@ public class Reservation {
     private LocalDateTime StartTime;
     private LocalDateTime EndTime;
     private int userId;
-    private int workspaceId;
+    private int terrainId;
     private String status;
 
     public Reservation() {
     }
 
-    public Reservation(int id, LocalDateTime startTime, LocalDateTime endTime, int userId, int workspaceId, String status) {
+    public Reservation(int id, LocalDateTime startTime, LocalDateTime endTime, int userId, int terrainId, String status) {
         this.id = id;
         StartTime = startTime;
         EndTime = endTime;
         this.userId = userId;
-        this.workspaceId = workspaceId;
+        this.terrainId = terrainId;
         this.status = status;
     }
 
@@ -62,11 +62,11 @@ public class Reservation {
         this.userId = userId;
     }
 
-    public int getWorkspaceId() {
-        return workspaceId;
+    public int getTerrainId() {
+        return terrainId;
     }
 
-    public void setWorkspaceId(int workspaceId) {
-        this.workspaceId = workspaceId;
+    public void setTerrainId(int terrainId) {
+        this.terrainId = terrainId;
     }
 }

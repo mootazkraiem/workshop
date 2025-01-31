@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
@@ -39,10 +38,10 @@
                     </cellValueFactory>
                 </TableColumn>
 
-                <!-- Workspace ID Column -->
-                <TableColumn fx:id="colWorkspaceId" text="Workspace ID" prefWidth="100">
+                <!-- Terrain ID Column -->
+                <TableColumn fx:id="colTerrainId" text="Terrain ID" prefWidth="100">
                     <cellValueFactory>
-                        <PropertyValueFactory property="workspaceId"/>
+                        <PropertyValueFactory property="terrainId"/>
                     </cellValueFactory>
                 </TableColumn>
 
@@ -56,7 +55,7 @@
         </TableView>
 
         <!-- Back Button -->
-<!--        <Button fx:id="backButton" text="Back to Dashboard" layoutX="20" layoutY="480" onAction="#handleBackToDashboard" />-->
+        <!--        <Button fx:id="backButton" text="Back to Dashboard" layoutX="20" layoutY="480" onAction="#handleBackToDashboard" />-->
     </children>
 
 </AnchorPane>

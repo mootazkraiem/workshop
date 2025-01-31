@@ -9,9 +9,9 @@
     <!-- Header -->
     <Label text="Make a Reservation" styleClass="header-label" layoutX="200" layoutY="20" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
 
-    <!-- Workspace Field -->
-    <Label text="Workspace:" layoutX="50" layoutY="80" />
-    <ComboBox fx:id="workspaceComboBox" layoutX="150" layoutY="80" prefWidth="300" promptText="Select Workspace" />
+    <!-- Terrain Field -->
+    <Label text="Terrain:" layoutX="50" layoutY="80" />
+    <ComboBox fx:id="terrainComboBox" layoutX="150" layoutY="80" prefWidth="300" promptText="Select Terrain" />
 
     <!-- Start Time -->
     <Label text="Start Time:" layoutX="50" layoutY="130" />
@@ -38,4 +38,3 @@
     <!-- Status Message -->
     <Label fx:id="statusLabel" layoutX="50" layoutY="380" textFill="red" />
 </AnchorPane>
-

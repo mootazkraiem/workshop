@@ -1,48 +1,64 @@
 /* General Styles */
-.dashboard-header {
-    -fx-font-size: 20px;
+.header-container {
+    -fx-background-color: #1abc9c; /* Soft green background */
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-border-radius: 0 0 20px 20px; /* Rounded bottom corners */
+}
+
+.header-title {
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
-    -fx-padding: 10px;
-    -fx-background-color: #2c3e50;
     -fx-text-fill: white;
+}
+
+/* Content Area (Main button area) */
+.content-area {
+    -fx-background-color: #ecf0f1; /* Light background for the content area */
+    -fx-padding: 50px;
     -fx-alignment: center;
 }
 
-/* Side Menu Styles */
-.side-menu {
-    -fx-background-color: #34495e;
-    -fx-padding: 15;
-}
-
-.menu-button {
-    -fx-background-color: #2c3e50;
+.big-button {
+    -fx-background-color: #3498db; /* Bright blue for buttons */
     -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 10;
-    -fx-border-color: transparent;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
+    -fx-font-size: 18px;
+    -fx-padding: 15px 30px;
+    -fx-border-radius: 25px;
+    -fx-pref-width: 250px;
+    -fx-pref-height: 60px;
+    -fx-transition: background-color 0.3s ease;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0.7, 0, 0);
 }
 
-.menu-button:hover {
-    -fx-background-color: #16a085;
+.big-button:hover {
+    -fx-background-color: #2980b9; /* Darker blue on hover */
 }
 
+/* Logout Button Style */
 .logout-button {
     -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-padding: 15px 30px;
+    -fx-border-radius: 25px;
+    -fx-pref-width: 250px;
+    -fx-pref-height: 60px;
+    -fx-transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
-    -fx-background-color: #c0392b;
+    -fx-background-color: #c0392b; /* Darker red on hover */
 }
 
-/* Content Area Styles */
-.content-pane {
-    -fx-padding: 15;
-}
-
-.default-content {
-    -fx-font-size: 16px;
-    -fx-text-fill: #2c3e50;
+/* Button text styling */
+.big-button, .logout-button {
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial", sans-serif;
     -fx-alignment: center;
+}
+
+/* Remove focus borders */
+.big-button:focused, .logout-button:focused {
+    -fx-border-color: transparent;
 }

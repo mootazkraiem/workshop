@@ -9,20 +9,19 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.AdminDashboardController" stylesheets="@styles.css">
     <!-- Top Menu (Optional, Can Add a Header) -->
     <top>
-        <Label text="Admin" styleClass="dashboard-header"  prefWidth="180.5" />
+        <Label text="Admin" styleClass="dashboard-header" prefWidth="180.5" />
     </top>
 
     <!-- Left Side Menu -->
     <left>
         <VBox spacing="20" styleClass="side-menu" minWidth="100">
             <!-- Menu Items -->
-            <Button fx:id="btnReservations" text="Reservations" onAction="#navigateToReservations" styleClass="menu-button"  prefWidth="150"/>
-            <Button fx:id="btnWorkspaces" text="Workspaces" onAction="#navigateToWorkspaces" styleClass="menu-button"  prefWidth="150"/>
-            <Button fx:id="btnUsers" text="Users" onAction="#navigateToUsers" styleClass="menu-button"  prefWidth="150"/>
-            <Button fx:id="btnLogout" text="Logout" onAction="#logout" styleClass="menu-button logout-button"  prefWidth="150"/>
+            <Button fx:id="btnReservations" text="Reservations" onAction="#navigateToReservations" styleClass="menu-button" prefWidth="150"/>
+            <Button fx:id="btnTerrains" text="Terrains" onAction="#navigateToTerrains" styleClass="menu-button" prefWidth="150"/>
+            <Button fx:id="btnUsers" text="Users" onAction="#navigateToUsers" styleClass="menu-button" prefWidth="150"/>
+            <Button fx:id="btnLogout" text="Logout" onAction="#logout" styleClass="menu-button logout-button" prefWidth="150"/>
         </VBox>
     </left>
-
 
     <!-- Main Content Area -->
     <center>
@@ -32,4 +31,3 @@
         </StackPane>
     </center>
 </BorderPane>
-

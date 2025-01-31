@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public class AdminDashboardController {
 
-
     @FXML
     private StackPane contentPane;
 
@@ -36,8 +35,8 @@ public class AdminDashboardController {
     }
 
     @FXML
-    private void navigateToWorkspaces() {
-        loadView("workspace-view.fxml");
+    private void navigateToTerrains() { // Changed from navigateToWorkspaces to navigateToTerrains
+        loadView("terrain-view.fxml"); // Changed from terrain-view.fxml to terrain-view.fxml
     }
 
     @FXML
@@ -47,7 +46,7 @@ public class AdminDashboardController {
 
     @FXML
     private void logout() {
-        CurrentUser currentUser= CurrentUser.getInstance();
+        CurrentUser currentUser = CurrentUser.getInstance();
         currentUser.clear();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
@@ -58,10 +57,9 @@ public class AdminDashboardController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
-
     }
+
     private void loadView(String fxmlFile) {
         try {
             Parent view = FXMLLoader.load(getClass().getResource("/com/example/demo/" + fxmlFile));
@@ -71,5 +69,4 @@ public class AdminDashboardController {
             e.printStackTrace();
         }
     }
-
 }

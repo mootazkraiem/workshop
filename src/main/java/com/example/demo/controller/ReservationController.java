@@ -82,7 +82,7 @@ public class ReservationController {
             ObservableList<String> statusNames = FXCollections.observableArrayList(
                     "pending",
                     "canceled",
-                    "confirme"
+                    "confirmed"
 
             );
             statusField.setItems(statusNames);
